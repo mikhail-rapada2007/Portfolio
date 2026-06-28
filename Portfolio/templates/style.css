@@ -6,14 +6,22 @@
     font-family: system-ui, -apple-system, sans-serif; 
 }
 
-.page-container, .portfolio-container {
+/* =========================================
+   1. GLOBAL BODY 
+   ========================================= */
+body {
+    background-color: #0b0f19; 
+    color: #ffffff; 
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center; 
+    /* NOTE: I removed align-items: center; so your tall pages can scroll properly */
+}
+
+.projects-page, .tutoring-page, .portfolio-container {
     width: 100%;
     max-width: 1200px;
     padding: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 60px;
-    
 }
 
 .portfolio-container {
@@ -21,13 +29,26 @@
     grid-template-columns: 1fr 1fr; 
     gap: 60px;
     align-items: center;
+    min-height: 100vh; 
 }
 
-.page-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px; 
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 50px; 
+    margin-top: 20px; 
+    grid-template-areas:
+    "project-1 project-2 project-3" 
 }
+
+.project-card{
+    background-color: #111520;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #1f1c1caf;
+    transition: all .8s ease;
+}
+
 
 body {
     background-color: #0b0f19; 
@@ -169,6 +190,48 @@ h2{
     color: #f97316
 }
 
+.page-title{
+    font-size: 80px;
+    align-items: center;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+    background: linear-gradient(
+        to right,
+        #1693f9,
+        #02c8fa,
+        #1693f9
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientAnimation 2s linear infinite;
+}
 
+.aqualert{
+    width: 300px;
+    height: 160px;
+    border-radius: 12px;
+}
 
+.allersense{
+    width: 300px;
+    height: 160px;
+    border-radius: 12px;
+}
+
+.dropwise{
+    width: 300px;
+    height: 160px;
+    border-radius: 12px;
+}
+
+.project-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 10px 50px #264a4e8c;
+    border-color: #519da7;
+}
+
+.project-summary, .project-details{
+    text-align: justify;
+}
 
