@@ -108,6 +108,10 @@ a {
     line-height: 1.6;
 }
 
+.compeng{
+    font-weight: bold;
+}
+
 .right-side-grid{
     display: grid;
     grid-template-columns: 200px 200px;
@@ -235,3 +239,47 @@ h2{
     text-align: justify;
 }
 
+.years, .title{
+    font-size: 80px;
+    align-items: center;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+    background: linear-gradient(
+        to right,
+        #16f974,
+        #0c8626,
+        #16f974
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientAnimation 2s linear infinite;
+}
+
+.years{
+    font-size: 120px;
+}
+
+.tutoring-content{
+    display: grid;
+    gap: 1em;
+    grid-template-areas:
+    "tutortext-1"
+}
+
+.text-section{
+    background-color: #0b0f19;
+    border: #221f2e 2px solid;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: justify; 
+    transition: all 1s ease; 
+}
+
+.text-section:hover{
+    box-shadow: 0 10px 40px rgba(35, 163, 52, 0.2);
+    border-color: #15b151;
+    border-radius: 12px;
+    transform: translateY(-8px);
+}
