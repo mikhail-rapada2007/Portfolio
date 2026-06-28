@@ -1,34 +1,66 @@
-/* =========================================
-   GLOBAL STYLES (Applies to all pages)
-   ========================================= */
 
-/* Reset default browser margins and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, sans-serif; /* Clean, modern font */
+    font-family: system-ui, -apple-system, sans-serif; 
 }
 
-/* The main background and text colors */
+
 body {
-    background-color: #0b0f19; /* Deep dark blue/black background */
-    color: #ffffff; /* White text by default */
-    min-height: 100vh; /* Ensures the background covers the whole screen */
+    background-color: #0b0f19; 
+    color: #ffffff; 
+    min-height: 100vh; 
     display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically for the home page */
+    justify-content: center; 
+    align-items: center; 
 }
 
-/* Links (like your back button) */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* General spacing container for all pages */
 .page-container, .portfolio-container {
     width: 100%;
     max-width: 1200px;
     padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 60px;
 }
+
+.greeting {
+    margin-left: 4.4px;
+    font-size: 1.2rem;
+    color: #e0e4eb; 
+    margin-bottom: 10px;
+}
+
+.name {
+    font-size: 5.5rem; 
+    font-weight: 900; /* Extra bold */
+    line-height: 0.95; /* Keeps the first and last name tightly stacked */
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: -1.5px; /* Pulls the letters slightly closer together */
+}
+
+.first-name{
+    display: block;
+    color: #ffffff;
+}
+
+.last-name{
+    display: block;
+    color: #f97316;
+}
+
+.description{
+    margin-left: 10px;
+    color: #d1d5db;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 450px;
+}
+
