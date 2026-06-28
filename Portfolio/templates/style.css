@@ -64,3 +64,22 @@ a {
     max-width: 450px;
 }
 
+.page-container, .portfolio-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+}
+
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 60px;
+    align-items: center;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+}
