@@ -10,53 +10,59 @@
   <body>       
       <main class="portfolio-container">
 
-        <section class="left-side">
-          <p class="greeting">Hi, I am</p>
+        <section class="left-side-grid">
+          <p class="greeting">Hi! I am</p>
           <h1 class="name">
-            <span class="first-name">Mikhail</span>
+            <span class="first-name">MikhaiL</span>
             <span class="last-name">Rapada</span>
           </h1>
 
-          <div class="description-container">
-            <p class="description">
+          <p class="description">
               A versatile computer engineering student that can handle both software and hardware aspects of technology.
-            </p>
-          </div>
+          </p>
         </section>
 
 
-        <section class="right-side">
-          <div class ="top-boxes">
-            <a href="projects.html" class="box">
+      <section class="right-side-grid">
+
+          <div class="box" style="grid-area: box-1">
+            <a href="projects.html">
               <h2>3</h2>
               <p class="project-box-description">Completed Projects</p>
             </a>
-      
-            <a href="tutoring.html" class="box">
+          </div>
+
+          <div class="box" style="grid-area: box-2;">
+          <a href="tutoring.html" style="grid-area: box-2">
               <h2>2</h2>
               <p class="tutor-box-description">Years Tutoring</p>
             </a>
+          </div>
 
-            <section class="middle-box-container">
-              <p class="skills-box">Skills</p>
-                <span class="skills">C++</span>
-                <span class="skills">Mathematics</span>
-                <span class="skills">Project Management</span>
-                <span class="skills">Python</span>
-            </section>
+          <div class="box" style="grid-area: box-3;">
+              <p class="skills-label">SKILLS</p>
+              <p class="code-text">
+                <code class="skills">C++</code>
+                <code class="skills">Mathematics</code>
+                <code class="skills">Project Management</code>
+                <code class="skills">Python</code>
+              </p>
+         </div>
 
-            <section class="bottom-box-container">
-              <p class="contact-box">Contacts</p>
+
+         <div class="box" style="grid-area: box-4;">
+              <p class="contacts-label">CONTACTS</p>
               <div class="contact-links">
                 <a href="https://www.linkedin.com/in/mprapada/" target="_blank" class="contact-item">
-                  <span class="icon-placeholder">[linkedin logo] </span>
+                  <code class="contact-link">linkedin</code>
                 </a>
                 <a href="mailto:mprapada@student.hau.edu.ph" class="contact-item">
-                  <span class="icon-placeholder">[email logo] </span>
+                  <code class="contact-link">email</code>
                 </a>
               </div>
-            </section>
+          </div>
 
+      </section>
       </main>
   </body>
 </html>
