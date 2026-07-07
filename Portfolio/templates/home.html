@@ -1,10 +1,11 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Main Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
   </head>
 
   <body>       
@@ -22,18 +23,17 @@
           </p>
         </section>
 
-
       <section class="right-side-grid">
 
           <div class="box" style="grid-area: box-1">
-            <a href="projects.html">
+            <a href="{% url 'projects' %}">
               <h2>3</h2>
               <p class="project-box-description">Completed Projects</p>
             </a>
           </div>
 
           <div class="box" style="grid-area: box-2;">
-          <a href="tutoring.html" style="grid-area: box-2">
+          <a href="{% url 'tutoring' %}" style="grid-area: box-2">
               <h2>2</h2>
               <p class="tutor-box-description">Years Tutoring</p>
             </a>
@@ -49,15 +49,17 @@
               </p>
          </div>
 
-
          <div class="box" style="grid-area: box-4;">
-              <p class="contacts-label">CONTACTS</p>
+              <p class="contacts-label">CONTACTS & INFO</p>
               <div class="contact-links">
                 <a href="https://www.linkedin.com/in/mprapada/" target="_blank" class="contact-item">
                   <code class="contact-link">linkedin</code>
                 </a>
                 <a href="mailto:mprapada@student.hau.edu.ph" class="contact-item">
                   <code class="contact-link">email</code>
+                </a>
+                <a href="tel:+1234567890" class="about-me">
+                  <code class="contact-link">abt.me</code>
                 </a>
               </div>
           </div>
