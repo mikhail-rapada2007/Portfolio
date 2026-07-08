@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Me</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+
+  <body>
+
+    <main class="about-me-page">
+      <nav class="navigation">
+        <a href="{% url 'home' %}">← Back to Home</a>
+      </nav>
+
+    <h1 class="page-title-abtme">About Me</h1>
+
+      <div class="contact-info" style="grid-area: contact-info1">
+
+      <h1 class="about-me-title">
+        {{ info.first_name }} {{ info.middle_name }} {{ info.last_name }}
+      </h1>
+
+      <section class="about-me-content">
+        <p class="about-me-summary">{{ info.summary }}</p><br>
+
+        <div class="about-me-details">
+          <p class="contact-label">Contact Number: <span class="info-line">{{ info.contact_number }}</span></p>
+          <p class="contact-label">Email: <span class="info-line">{{ info.email }}</span></p>
+          <p class="contact-label">Address: <span class="info-line">{{ info.address }}</span></p>
+        </div>
+      </section>
+
+      </div>
+
+
+    </main>
+  </body>
+</html>
