@@ -15,10 +15,10 @@
         </nav>
 
         <div class="project-card">
-            <h1 class="project-title">{{ testimony.full_name }}</h1>
             <div class="project-details">
-                <p>{{ testimony.content }}</p>
+                <p>"{{ testimony.content }}"</p>
             </div>
+            <h1 class="testimony-author" style="text-align: right;">- {{ testimony.full_name }}</h1>
         </div>
     </main>
 

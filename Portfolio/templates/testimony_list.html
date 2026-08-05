@@ -16,13 +16,13 @@
 
         <h3 class="page-title">Testimonies</h3>
 
-        <a href="{% url 'add_testimony' %}">+ Leave a Testimony</a>
+        <a href="{% url 'add_testimony' %}" class="leave-testimony-btn">+ Leave a Testimony</a>
 
         <section class="projects-grid">
             {% for testimony in testimonies %}
             <div class="project-card">
                 <a href="{% url 'testimony_detail' testimony.pk %}">
-                    <h1 class="project-title">{{ testimony.full_name }}</h1>
+                    <h1 class="project-title-list">{{ testimony.full_name }}</h1>
                 </a>
             </div>
             {% endfor %}
