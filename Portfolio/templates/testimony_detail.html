@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ testimony.full_name }}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="projects-page">
+        <nav class="navigation">
+            <a href="{% url 'testimony_list' %}">← Back to Testimonies</a>
+        </nav>
+
+        <div class="project-card">
+            <h1 class="project-title">{{ testimony.full_name }}</h1>
+            <div class="project-details">
+                <p>{{ testimony.content }}</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

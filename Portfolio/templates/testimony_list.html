@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonies</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="projects-page">
+        <nav class="navigation">
+            <a href="{% url 'home' %}">← Back to Home</a>
+        </nav>
+
+        <h3 class="page-title">Testimonies</h3>
+
+        <a href="{% url 'add_testimony' %}">+ Leave a Testimony</a>
+
+        <section class="projects-grid">
+            {% for testimony in testimonies %}
+            <div class="project-card">
+                <a href="{% url 'testimony_detail' testimony.pk %}">
+                    <h1 class="project-title">{{ testimony.full_name }}</h1>
+                </a>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+
+</body>
+</html>
