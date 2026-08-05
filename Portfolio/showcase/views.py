@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.views.generic import ListView
-from .models import Project, PersonalInfo, Testimony
+from .models import Inquiry, Project, PersonalInfo, Testimony
 from .forms import ProjectForm, TestimonyForm
 from .models import Project
 
@@ -82,3 +82,26 @@ def testimony_detail(request, pk):
         'testimony': testimony,
     }
     return render(request, 'testimony_detail.html', context)
+
+
+def contact(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        contact_number = request.POST.get('contact_number')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        message = request.POST.get('message')
+
+        new_inquiry = Inquiry(
+            first_name=first_name,
+            last_name=last_name,
+            contact_number=contact_number,
+            email=email,
+            address=address,
+            message=message,
+        )
+        new_inquiry.save()
+        return redirect('home')
+
+    return render(request, 'contact.html')

@@ -9,3 +9,4 @@ class ProjectForm(forms.Form):
 class TestimonyForm(forms.Form):
     full_name = forms.CharField()
     content = forms.CharField(widget=forms.Textarea)
+
