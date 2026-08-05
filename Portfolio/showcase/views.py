@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
-from .models import Project, PersonalInfo
-from .forms import ProjectForm
+from django.views.generic import ListView
+from .models import Project, PersonalInfo, Testimony
+from .forms import ProjectForm, TestimonyForm
 from .models import Project
 
 
@@ -49,3 +50,35 @@ def add_project(request):
         'form': form,
     }
     return render(request, 'add_project.html', context)
+
+
+def add_testimony(request):
+    if request.method == 'POST':
+        form = TestimonyForm(request.POST)
+        if form.is_valid():
+            new_testimony = Testimony(
+                full_name=form.cleaned_data['full_name'],
+                content=form.cleaned_data['content'],
+            )
+            new_testimony.save()
+            return redirect('testimony_list')
+    else:
+        form = TestimonyForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'add_testimony.html', context)
+
+
+class TestimonyListView(ListView):
+    model = Testimony
+    template_name = 'testimony_list.html'
+    context_object_name = 'testimonies'
+
+
+def testimony_detail(request, pk):
+    testimony = Testimony.objects.get(id=pk)
+    context = {
+        'testimony': testimony,
+    }
+    return render(request, 'testimony_detail.html', context)

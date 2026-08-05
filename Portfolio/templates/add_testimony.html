@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a Testimony</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="projects-page">
+        <nav class="navigation">
+            <a href="{% url 'testimony_list' %}">← Back to Testimonies</a>
+        </nav>
+
+        <h3 class="page-title">Leave a Testimony</h3>
+
+        <form method="post" class="project-form">
+            {% csrf_token %}
+
+            <label for="{{ form.full_name.id_for_label }}">Your Name</label>
+            {{ form.full_name }}
+
+            <label for="{{ form.content.id_for_label }}">Your Testimony</label>
+            {{ form.content }}
+
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+</body>
+</html>
