@@ -44,3 +44,13 @@ Good morning, sir. Before I started the quiz, I had to solve some issues first r
 **July 8, 2026 | 3:45pm**
 
 Good afternoon, sir. I finally finished quiz 2. I was able to make a database and render the info I provided. It was not easy, it takes time to learn for sure. I hope this time I was able to make proper commits and merges.
+
+---
+
+## QUIZ 3 LOG
+
+**August 5, 2026 | 4:06pm**
+
+Good afternoon, sir. I think I know why I struggle in this subject. I lack experience in making websites and I lack knowledge in frameworks and Python. I only know basic coding logic such as loops, while, and if-then conditions. Applying them in OOP would be okay in difficulty, but setting up the workspace (VScode, github, git) is what gets me hard-stuck. I think a solution could be small activities; something short and fun like a simple django website that does one function would be enough to give me muscle memory in setting up the workspace. I will keep trying my best to follow and learn. Also if it is okay to ask, is there an app that could teach me Django and Python? When I review for math subjects, I usually solve problems during my free time. I want to do the same strategy in programming, where I can code whenever I want.
+
+
