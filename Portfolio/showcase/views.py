@@ -2,8 +2,23 @@ from django.shortcuts import redirect, render
 from django.views.generic import ListView
 from .models import Inquiry, Project, PersonalInfo, Testimony
 from .forms import ProjectForm, TestimonyForm
-from .models import Project
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
+
+def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None and user.is_superuser:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            return render(request, 'admin_login.html', {'error': 'Invalid credentials or not an admin.'})
+
+    return render(request, 'admin_login.html')
 
 def home(request):
     return render(request, 'home.html')
@@ -105,3 +120,4 @@ def contact(request):
         return redirect('home')
 
     return render(request, 'contact.html')
+

@@ -12,4 +12,5 @@ urlpatterns = [
     path('testimonies/<int:pk>/', views.testimony_detail, name='testimony_detail'),
     path('testimonies/add/', views.add_testimony, name='add_testimony'),
     path('contact/', views.contact, name='contact'),
+    path('admin-login/', views.admin_login, name='admin_login'),
 ]
