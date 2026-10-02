@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
 from django.views.generic import ListView
-from .models import Inquiry, Project, PersonalInfo, Testimony
-from .forms import ProjectForm, TestimonyForm
-from django.contrib.auth import authenticate, login
+from .models import Inquiry, Project, PersonalInfo, Testimony, TechStack
+from .forms import ProjectForm, TestimonyForm, TechStackForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
@@ -47,6 +47,7 @@ def about_me(request):
     }
     return render(request, 'about_me.html', context)
 
+@login_required(login_url='admin_login')
 def add_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST)
@@ -54,11 +55,11 @@ def add_project(request):
             new_project = Project(
                 project_name=form.cleaned_data['project_name'],
                 description=form.cleaned_data['description'],
-                tech_stack=form.cleaned_data['tech_stack'],
                 link=form.cleaned_data['link'],
             )
             new_project.save()
-            return redirect('projects')
+            new_project.tech_stack.set(form.cleaned_data['tech_stack'])
+            return redirect('dashboard')
     else:
         form = ProjectForm()
     context = {
@@ -120,4 +121,33 @@ def contact(request):
         return redirect('home')
 
     return render(request, 'contact.html')
+
+@login_required(login_url='admin_login')
+def dashboard(request):
+    projects = Project.objects.all()
+    tech_stacks = TechStack.objects.all()
+    context = {
+        'projects': projects,
+        'tech_stacks': tech_stacks,
+    }
+    return render(request, 'dashboard.html', context)
+
+def admin_logout(request):
+    logout(request)
+    return redirect('home')
+
+@login_required(login_url='admin_login')
+def add_tech_stack(request):
+    if request.method == 'POST':
+        form = TechStackForm(request.POST)
+        if form.is_valid():
+            new_tech = TechStack(name=form.cleaned_data['name'])
+            new_tech.save()
+            return redirect('dashboard')
+    else:
+        form = TechStackForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'add_tech_stack.html', context)
 

@@ -13,4 +13,7 @@ urlpatterns = [
     path('testimonies/add/', views.add_testimony, name='add_testimony'),
     path('contact/', views.contact, name='contact'),
     path('admin-login/', views.admin_login, name='admin_login'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('admin-logout/', views.admin_logout, name='admin_logout'),
+    path('dashboard/add-tech-stack/', views.add_tech_stack, name='add_tech_stack'),
 ]
