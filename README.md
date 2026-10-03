@@ -84,6 +84,7 @@ Then visit `http://127.0.0.1:8000/` in your browser.
 - **The database starts empty.** No projects, tech stacks, or testimonies will appear on the portfolio until you add some. You can add data two ways:
   - Through Django's built-in admin panel at `/admin/` (log in with your superuser account)
   - Through the custom dashboard at `/dashboard/` (after logging in via `/admin-login/`)
+- **Add Tech Stacks First.** In the admin dashboard, an admin cannot create a project since tech stacks must exist first so that they may be selected.
 - **Only superuser accounts can access the admin dashboard.** Regular registered users, even if created, cannot sign in through `/admin-login/`.
 - **Tech Stack selection on the Create Project form uses checkboxes, not radio buttons.** This is intentional: a single project can use multiple tech stacks, and radio buttons only allow selecting one option at a time, so checkboxes were used to correctly support multiple selections.
 
