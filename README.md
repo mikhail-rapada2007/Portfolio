@@ -50,32 +50,32 @@ macOS/Linux:
 Duplicate the `.env.example` and rename it as a new file named `.env` in the project root.
 
 Open `.env` and fill in the values:
-`SECRET_KEY=your-generated-secret-key-here
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost`
+`SECRET_KEY=your-generated-secret-key-here`
+`DEBUG=True`
+`ALLOWED_HOSTS=127.0.0.1,localhost`
 
 To generate a SECRET_KEY, run:
-python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+`python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`
 
 Copy the printed value into `.env`.
 
 
 ### 5. Run migrations
 The repository does not include a database file. This builds the required tables from scratch:
-python manage.py migrate
+`python manage.py migrate`
 
 
 ### 6. Create a superuser (admin) account
 This is required — without it, you cannot log into the admin dashboard, since only superuser accounts are permitted to sign in.
 Run the following line in the terminal:
 
-python manage.py createsuperuser
+`python manage.py createsuperuser`
 
 Follow the prompts to set a username, email (optional), and password.
 
 
 ### 7. Run the development server
-run: python manage.py runserver 
+run: `python manage.py runserver`
 
 Then visit `http://127.0.0.1:8000/` in your browser.
 
