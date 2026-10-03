@@ -1,56 +1,121 @@
-# Portfolio
+# Mikhail Rapada — Personal Portfolio
 
-## Functionality of My Portfolio
+A Django-based personal portfolio showcasing my projects, tutoring experience, and testimonials, with an admin-only dashboard for managing content.
 
-1. After cloning this repository, run `python manage.py runserver` in the terminal.
-2. Click the server link: http://127.0.0.1:8000/
-3. Portfolio should run properly.
+**Live site:** [add PythonAnywhere URL here once deployed]
 
-The main screen consists of a greeting, my name, a brief description, and the grid boxes. The Projects, Tutoring, and Contacts sections are all fully clickable except for the skills (:'D). I also added hover effects to every grid box because I felt it made the interface look clean and interactive.
+## Features
 
----
+- Public portfolio pages: Home, Projects (list + detail), Tutoring (view only), About Me (view only), Testimonies (form + list + detail), Contact (form)
+- Visitors can leave testimonials and send inquiries through the Contact page
+- Admin-only sign-in (superuser accounts only — regular users cannot access it) (ThE Current dasHboard has a hidden button).
+- Protected `/dashboard` for the site owner to:
+  - View all Projects and Tech Stacks in table form
+  - Add new Projects (with multiple tech stacks selectable via checkboxes)
+  - Add new Tech Stacks
+- New content added through the dashboard automatically appears on the public portfolio
 
-## QUIZ 1 LOG
+## Tech Stack
 
-Good morning/afternoon/evening, Sir.
+- Python 3.9
+- Django 4.2
+- SQLite (local development database)
+- python-dotenv (environment variable management)
 
-Your own portfolio heavily inspired this project. I really admired the grid layout you used on your site, and I decided to take that concept a step further by making my grid boxes clickable.
+## Setup Instructions
 
-### Addressing AI Use & My Learning Process
+These steps will get the project running from a fresh clone, including an empty database that you'll need to set up yourself.
 
-I want to be fully transparent: initially, this portfolio was assisted by AI. I started the project on Saturday morning by storyboarding every part of the website. From there, I told Gemini my plan, and it helped me build the HTML skeleton and the initial CSS design for the main screen.
+### 1. Clone the repository
+git clone https://github.com/mikhail-rapada2007/Portfolio.git
+cd Portfolio
 
-However, by Saturday evening, I saw your reminders in Canvas. At that point, I stopped using AI. From then on, I only used it purely as a search engine for specific troubleshooting (like when I got stuck on server port issues). For the actual design and coding of the remaining pages, I relied entirely on YouTube tutorials and manual trial-and-error.
 
-In total, it took me around 18 hours to fully finish the website. Learning manually is definitely slower without AI doing the heavy lifting, but I realized it is absolutely worth it. Through that process, I actually learned how CSS grids, text animations, and basic layouts work. I hope this project shows that I am committed to learning (and suffering) to produce a solid output. Moving forward, I will be minimizing my AI use so I can truly focus on building my fundamental skills.
+### 2. Create and activate a virtual environment
+python -m venv .venv
 
-Have a good day!
-**-Mikhail Rapada, CPE-201**
+Windows:
+.venv\Scripts\activate
 
-**p.s.** if for some reason it does not work, try this once everything is extracted: http://127.0.0.1:5500/Portfolio/templates/home.html
+macOS/Linux:
+source .venv/bin/activate
 
-**p.s.2** whenever i run `python manage.py runserver` it just gives me http://127.0.0.1:5500/ without `Portfolio/templates/home.html` — I suggest just running the live server and pressing the first link. I apologize for the inconvenience.
 
-**p.s.3** seems that the first link works if and only if the files are exported in VSCode and a test server is ran.
+### 3. Install dependencies
+pip install -r requirements.txt
 
----
 
-## QUIZ 2 LOG
+### 4. Set up environment variables
+Duplicate the `.env.example` and rename it as a new file named `.env` in the project root.
 
-**July 8, 2026 | 3:14am**
+Open `.env` and fill in the values:
+SECRET_KEY=your-generated-secret-key-here
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
 
-Good morning, sir. Before I started the quiz, I had to solve some issues first regarding my portfolio. The main issue was that my portfolio was just an HTML that was not being 'served' by Django. I had to research how to build my portfolio with Django. Anyhow, I think it now works with runserver. Currently, I have finished the projects part already. I will probably finish the personal info when I wake up.
+To generate a SECRET_KEY, run:
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 
-**July 8, 2026 | 3:45pm**
+Copy the printed value into `.env`.
 
-Good afternoon, sir. I finally finished quiz 2. I was able to make a database and render the info I provided. It was not easy, it takes time to learn for sure. I hope this time I was able to make proper commits and merges.
 
----
+### 5. Run migrations
+The repository does not include a database file. This builds the required tables from scratch:
+python manage.py migrate
 
-## QUIZ 3 LOG
 
-**August 5, 2026 | 4:06pm**
+### 6. Create a superuser (admin) account
+This is required — without it, you cannot log into the admin dashboard, since only superuser accounts are permitted to sign in.
+Run the following line in the terminal:
 
-Good afternoon, sir. I think I know why I struggle in this subject. I lack experience in making websites and I lack knowledge in frameworks and Python. I only know basic coding logic such as loops, while, and if-then conditions. Applying them in OOP would be okay in difficulty, but setting up the workspace (VScode, github, git) is what gets me hard-stuck. I think a solution could be small activities; something short and fun like a simple django website that does one function would be enough to give me muscle memory in setting up the workspace. I will keep trying my best to follow and learn. Also if it is okay to ask, is there an app that could teach me Django and Python? When I review for math subjects, I usually solve problems during my free time. I want to do the same strategy in programming, where I can code whenever I want.
+python manage.py createsuperuser
 
+Follow the prompts to set a username, email (optional), and password.
+
+
+### 7. Run the development server
+run: python manage.py runserver 
+
+Then visit `http://127.0.0.1:8000/` in your browser.
+
+## Important Notes
+
+- **The database starts empty.** No projects, tech stacks, or testimonies will appear on the portfolio until you add some. You can add data two ways:
+  - Through Django's built-in admin panel at `/admin/` (log in with your superuser account)
+  - Through the custom dashboard at `/dashboard/` (after logging in via `/admin-login/`)
+- **Only superuser accounts can access the admin dashboard.** Regular registered users, even if created, cannot sign in through `/admin-login/`.
+- **Tech Stack selection on the Create Project form uses checkboxes, not radio buttons.** This is intentional: a single project can use multiple tech stacks, and radio buttons only allow selecting one option at a time, so checkboxes were used to correctly support multiple selections.
+
+## Project Structure
+Portfolio/
+├── manage.py
+├── requirements.txt
+├── .env.example
+├── templates/ # All HTML templates
+├── static/ # CSS and images
+└── Portfolio/
+├── settings.py
+├── urls.py
+└── showcase/ # Main app: models, views, forms, admin, urls
+
+
+## Key URLs
+
+| URL | Description |
+|---|---|
+| `/` | Home page |
+| `/projects/` | Project list |
+| `/projects/<id>/` | Project detail |
+| `/projects/add/` | Add a project (admin only) |
+| `/tutoring/` | Tutoring page |
+| `/about/` | About Me |
+| `/testimonies/` | Testimony list |
+| `/testimonies/<id>/` | Testimony detail |
+| `/testimonies/add/` | Leave a testimony (public) |
+| `/contact/` | Contact / inquiry form (public) |
+| `/admin-login/` | Admin sign-in |
+| `/admin-logout/` | Admin sign-out |
+| `/dashboard/` | Admin dashboard (admin only) |
+| `/dashboard/add-tech-stack/` | Add a tech stack (admin only) |
+| `/admin/` | Django's built-in admin panel |
 
