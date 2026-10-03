@@ -19,15 +19,26 @@
           </h1>
 
           <p class="description">
-              A versatile <span class="compeng">computer engineering student</span> that can handle both software and hardware aspects of <a href="{% url 'admin_login' %}">tech</a>nology.
-          </p>
+               A versatile <span class="compeng">computer engineering student</span> that can handle both software and hardware aspects of
+              {% if user.is_authenticated and user.is_superuser %}technology.{% else %}<a href="{% url 'admin_login' %}">tech</a>nology.{% endif %}
+         
+            {% if user.is_authenticated and user.is_superuser %}
+                <div class="admin-greeting">
+                    <span class="admin-greeting-text">Hello, {{ user.username }}! You are logged in.</span>
+                    <a href="{% url 'dashboard' %}" class="admin-dashboard-btn">Go to Dashboard →</a>
+                </div>
+            {% endif %}
+         
+            </p>
+
+
         </section>
 
       <section class="right-side-grid">
 
           <div class="box" style="grid-area: box-1">
             <a href="{% url 'projects' %}">
-              <h2>3</h2>
+              <h2>{{ project_count }}</h2>
               <p class="project-box-description">Completed Projects</p>
             </a>
           </div>

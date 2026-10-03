@@ -22,11 +22,12 @@
                 <a href="{% url 'project_detail' project.pk %}">
                     <h1 class="project-title-list">{{ project.project_name }}</h1>
                 </a>
+                 {% empty %}
+                  <p>No projects available yet.</p>
+                {% endfor %}
             </div>
-            {% endfor %}
         </section>
         <br>
-        <a href="{% url 'add_project' %}" class="add-project-button">+ Add New Project</a>
     </main>
 
 </body>

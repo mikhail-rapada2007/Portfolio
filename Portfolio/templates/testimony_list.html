@@ -23,6 +23,7 @@
             <div class="project-card">
                 <a href="{% url 'testimony_detail' testimony.pk %}">
                     <h1 class="project-title-list">{{ testimony.full_name }}</h1>
+                    <p class="project-summary">{{ testimony.content|truncatechars:80 }}</p>
                 </a>
             </div>
             {% endfor %}
