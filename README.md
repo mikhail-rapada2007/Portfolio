@@ -86,18 +86,6 @@ Then visit `http://127.0.0.1:8000/` in your browser.
 - **Only superuser accounts can access the admin dashboard.** Regular registered users, even if created, cannot sign in through `/admin-login/`.
 - **Tech Stack selection on the Create Project form uses checkboxes, not radio buttons.** This is intentional: a single project can use multiple tech stacks, and radio buttons only allow selecting one option at a time, so checkboxes were used to correctly support multiple selections.
 
-## Project Structure
-Portfolio/
-├── manage.py
-├── requirements.txt
-├── .env.example
-├── templates/ # All HTML templates
-├── static/ # CSS and images
-└── Portfolio/
-├── settings.py
-├── urls.py
-└── showcase/ # Main app: models, views, forms, admin, urls
-
 
 ## Key URLs
 
