@@ -29,6 +29,7 @@ A Django-based personal portfolio showcasing my projects, tutoring experience, a
 These steps will get the project running from a fresh clone, including an empty database that you'll need to set up yourself.
 
 ### 1. Clone the repository
+In your VS Code terminal, run:
 `git clone https://github.com/mikhail-rapada2007/Portfolio.git`
 
 `cd Portfolio`
