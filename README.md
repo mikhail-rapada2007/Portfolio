@@ -8,7 +8,7 @@ A Django-based personal portfolio showcasing my projects, tutoring experience, a
 
 - Public portfolio pages: Home, Projects (list + detail), Tutoring (view only), About Me (view only), Testimonies (form + list + detail), Contact (form)
 - Visitors can leave testimonials and send inquiries through the Contact page
-- Admin-only sign-in (superuser accounts only — regular users cannot access it) (ThE Current dasHboard has a hidden button).
+- Admin-only sign-in (superuser accounts only — regular users cannot access it)
 - Protected `/dashboard` for the site owner to:
   - View all Projects and Tech Stacks in table form
   - Add new Projects (with multiple tech stacks selectable via checkboxes)
@@ -85,6 +85,7 @@ Then visit `http://127.0.0.1:8000/` in your browser.
   - Through Django's built-in admin panel at `/admin/` (log in with your superuser account)
   - Through the custom dashboard at `/dashboard/` (after logging in via `/admin-login/`)
 - **Add Tech Stacks First.** In the admin dashboard, an admin cannot create a project since tech stacks must exist first so that they may be selected.
+- **The Admin Login is Hidden.** The admin login is hidden in the word 'tech' in the technology word of my short description.
 - **Only superuser accounts can access the admin dashboard.** Regular registered users, even if created, cannot sign in through `/admin-login/`.
 - **Tech Stack selection on the Create Project form uses checkboxes, not radio buttons.** This is intentional: a single project can use multiple tech stacks, and radio buttons only allow selecting one option at a time, so checkboxes were used to correctly support multiple selections.
 
