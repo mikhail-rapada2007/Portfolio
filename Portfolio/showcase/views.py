@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView
 from .models import Inquiry, Project, PersonalInfo, Testimony, TechStack
 from .forms import ProjectForm, TestimonyForm, TechStackForm
@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 
 def admin_login(request):
+    if request.user.is_authenticated and request.user.is_superuser:
+        return redirect('dashboard')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -21,7 +24,11 @@ def admin_login(request):
     return render(request, 'admin_login.html')
 
 def home(request):
-    return render(request, 'home.html')
+    project_count = Project.objects.count()
+    context = {
+        'project_count': project_count,
+    }
+    return render(request, 'home.html', context)
 
 def tutoring(request):
     return render(request, 'tutoring.html')
@@ -34,7 +41,7 @@ def project_list(request):
     return render(request, 'projects.html', context)
 
 def project_detail(request, pk):
-    project = Project.objects.get(id=pk)
+    project = get_object_or_404(Project, pk=pk)
     context = {
         'project': project,
     }
@@ -93,7 +100,7 @@ class TestimonyListView(ListView):
 
 
 def testimony_detail(request, pk):
-    testimony = Testimony.objects.get(id=pk)
+    testimony = get_object_or_404(Testimony, pk=pk)
     context = {
         'testimony': testimony,
     }
@@ -102,12 +109,15 @@ def testimony_detail(request, pk):
 
 def contact(request):
     if request.method == 'POST':
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        contact_number = request.POST.get('contact_number')
-        email = request.POST.get('email')
-        address = request.POST.get('address')
-        message = request.POST.get('message')
+        first_name = request.POST.get('first_name', '').strip()
+        last_name = request.POST.get('last_name', '').strip()
+        contact_number = request.POST.get('contact_number', '').strip()
+        email = request.POST.get('email', '').strip()
+        address = request.POST.get('address', '').strip()
+        message = request.POST.get('message', '').strip()
+
+        if not all([first_name, last_name, contact_number, email, address, message]):
+            return render(request, 'contact.html', {'error': 'All fields are required.'})
 
         new_inquiry = Inquiry(
             first_name=first_name,
