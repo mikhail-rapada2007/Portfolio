@@ -19,8 +19,10 @@
 
             <div class="project-details">
                 <p>{{ project.description }}</p>
-                {% if project.tech_stack %}
-                    <p><strong>Tech Stack:</strong> {{ project.tech_stack }}</p>
+                {% if project.tech_stack.all %}
+                    <p><strong>Tech Stack:</strong>
+                    {% for tech in project.tech_stack.all %}{{ tech.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                     </p>
                 {% endif %}
                 {% if project.link %}
                     <p><a href="{{ project.link }}" target="_blank">View Project Link</a></p>
