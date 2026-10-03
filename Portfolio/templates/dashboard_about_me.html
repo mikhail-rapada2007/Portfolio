@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit About Me</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="projects-page">
+        <nav class="navigation">
+            <a href="{% url 'dashboard' %}">← Back to Dashboard</a>
+            <a href="{% url 'admin_logout' %}">Log Out</a>
+        </nav>
+
+        <h3 class="page-title">Edit Personal Info</h3>
+
+        <form method="post" class="project-form">
+            {% csrf_token %}
+
+            <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name</label>
+            {{ form.first_name }}
+            {% if form.first_name.errors %}<p class="form-error">{{ form.first_name.errors.0 }}</p>{% endif %}
+
+            <label for="{{ form.middle_name.id_for_label }}" class="form-label">Middle Name</label>
+            {{ form.middle_name }}
+
+            <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name</label>
+            {{ form.last_name }}
+            {% if form.last_name.errors %}<p class="form-error">{{ form.last_name.errors.0 }}</p>{% endif %}
+
+            <label for="{{ form.summary.id_for_label }}" class="form-label">Summary</label>
+            {{ form.summary }}
+            {% if form.summary.errors %}<p class="form-error">{{ form.summary.errors.0 }}</p>{% endif %}
+
+            <label for="{{ form.contact_number.id_for_label }}" class="form-label">Contact Number</label>
+            {{ form.contact_number }}
+            {% if form.contact_number.errors %}<p class="form-error">{{ form.contact_number.errors.0 }}</p>{% endif %}
+
+            <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+            {{ form.email }}
+            {% if form.email.errors %}<p class="form-error">{{ form.email.errors.0 }}</p>{% endif %}
+
+            <label for="{{ form.address.id_for_label }}" class="form-label">Address</label>
+            {{ form.address }}
+            {% if form.address.errors %}<p class="form-error">{{ form.address.errors.0 }}</p>{% endif %}
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </main>
+
+</body>
+</html>

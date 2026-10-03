@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tech Stacks</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="projects-page">
+        <nav class="navigation">
+            <a href="{% url 'dashboard' %}">← Back to Dashboard</a>
+            <a href="{% url 'admin_logout' %}">Log Out</a>
+        </nav>
+
+        <h3 class="page-title">Tech Stacks</h3>
+        
+            <a href="{% url 'add_tech_stack' %}" class="admin-dashboard-btn" style="margin-bottom: 20px;">+ Add New Tech Stack</a>
+       
+        <table class="dashboard-table" style="margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th>Tech Stack Name</th>
+                    <th>Project It Was Used</th>
+                    <th>Date Added</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tech in tech_stacks %}
+                <tr>
+                    <td>{{ tech.name }}</td>
+                    <td>
+                        {% for project in tech.project_set.all %}{{ project.project_name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </td>
+                    <td>{{ tech.created_at|date:"M d, Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+</body>
+</html>

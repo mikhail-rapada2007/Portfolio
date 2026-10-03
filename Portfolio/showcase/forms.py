@@ -18,3 +18,11 @@ class TestimonyForm(forms.Form):
 class TechStackForm(forms.Form):
     name = forms.CharField()
 
+class PersonalInfoForm(forms.Form):
+    first_name = forms.CharField()
+    middle_name = forms.CharField(required=False)
+    last_name = forms.CharField()
+    summary = forms.CharField(widget=forms.Textarea)
+    contact_number = forms.CharField()
+    email = forms.EmailField()
+    address = forms.CharField()

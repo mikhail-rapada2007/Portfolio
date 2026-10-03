@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView
-from .models import Inquiry, Project, PersonalInfo, Testimony, TechStack
-from .forms import ProjectForm, TestimonyForm, TechStackForm
+from .models import Inquiry, Project, PersonalInfo, Testimony, TechStack 
+from .forms import ProjectForm, TestimonyForm, TechStackForm, PersonalInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -132,16 +132,6 @@ def contact(request):
 
     return render(request, 'contact.html')
 
-@login_required(login_url='admin_login')
-def dashboard(request):
-    projects = Project.objects.all()
-    tech_stacks = TechStack.objects.all()
-    context = {
-        'projects': projects,
-        'tech_stacks': tech_stacks,
-    }
-    return render(request, 'dashboard.html', context)
-
 def admin_logout(request):
     logout(request)
     return redirect('home')
@@ -161,3 +151,53 @@ def add_tech_stack(request):
     }
     return render(request, 'add_tech_stack.html', context)
 
+@login_required(login_url='admin_login')
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
+@login_required(login_url='admin_login')
+def dashboard_projects(request):
+    projects = Project.objects.all()
+    return render(request, 'dashboard_projects.html', {'projects': projects})
+
+@login_required(login_url='admin_login')
+def dashboard_tech_stacks(request):
+    tech_stacks = TechStack.objects.all()
+    return render(request, 'dashboard_tech_stacks.html', {'tech_stacks': tech_stacks})
+
+@login_required(login_url='admin_login')
+def dashboard_about_me(request):
+    info = PersonalInfo.objects.first()
+
+    if request.method == 'POST':
+        form = PersonalInfoForm(request.POST)
+        if form.is_valid():
+            if info is None:
+                info = PersonalInfo()
+            info.first_name = form.cleaned_data['first_name']
+            info.middle_name = form.cleaned_data['middle_name']
+            info.last_name = form.cleaned_data['last_name']
+            info.summary = form.cleaned_data['summary']
+            info.contact_number = form.cleaned_data['contact_number']
+            info.email = form.cleaned_data['email']
+            info.address = form.cleaned_data['address']
+            info.save()
+            return redirect('dashboard_about_me')
+    else:
+        if info:
+            form = PersonalInfoForm(initial={
+                'first_name': info.first_name,
+                'middle_name': info.middle_name,
+                'last_name': info.last_name,
+                'summary': info.summary,
+                'contact_number': info.contact_number,
+                'email': info.email,
+                'address': info.address,
+            })
+        else:
+            form = PersonalInfoForm()
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'dashboard_about_me.html', context)

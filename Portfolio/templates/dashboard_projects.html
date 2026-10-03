@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Projects</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="projects-page">
+        <nav class="navigation">
+            <a href="{% url 'dashboard' %}">← Back to Dashboard</a>
+            <a href="{% url 'admin_logout' %}">Log Out</a>
+        </nav>
+
+        <h3 class="page-title">Projects</h3>
+            
+            <a href="{% url 'add_project' %}" class="admin-dashboard-btn" style="margin-bottom: 20px;">+ Add New Project</a>
+            
+        <table class="dashboard-table" style="margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Description</th>
+                    <th>Tech Stack</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.project_name }}</td>
+                    <td>{{ project.description|truncatechars:50 }}</td>
+                    <td>
+                        {% for tech in project.tech_stack.all %}{{ tech.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </td>
+                    <td>{% if project.link %}<a href="{{ project.link }}" target="_blank">View</a>{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+</body>
+</html>
