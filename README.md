@@ -1,7 +1,7 @@
 # Mikhail Rapada — Personal Portfolio
 
 A Django-based personal portfolio showcasing my projects, tutoring experience, and testimonials, with an admin-only dashboard for managing content. 
-**Please see Important Notes for more details about the project**
+**Please see the Important Notes section for more details about the project.**
 
 **Live site:** https://mikhailrapada.pythonanywhere.com/
 
