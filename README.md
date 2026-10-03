@@ -14,6 +14,7 @@ A Django-based personal portfolio showcasing my projects, tutoring experience, a
   - View all Projects and Tech Stacks in table form
   - Add new Projects (with multiple tech stacks selectable via checkboxes)
   - Add new Tech Stacks
+  - Edit About Me
 - New content added through the dashboard automatically appears on the public portfolio
 
 ## Tech Stack
