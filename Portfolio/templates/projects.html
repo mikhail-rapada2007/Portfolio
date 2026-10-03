@@ -22,10 +22,10 @@
                 <a href="{% url 'project_detail' project.pk %}">
                     <h1 class="project-title-list">{{ project.project_name }}</h1>
                 </a>
+            </div>
                  {% empty %}
                   <p>No projects available yet.</p>
                 {% endfor %}
-            </div>
         </section>
         <br>
     </main>
