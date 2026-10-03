@@ -24,6 +24,8 @@
                 <h2 class="testimony-name">{{ testimony.full_name }}</h2>
                 <p class="testimony-preview">{{ testimony.content|truncatechars:80 }}</p>
             </a>
+                {% empty %}
+                  <p>No testimonies available yet.</p>
             {% endfor %}
         </section>
     </main>
