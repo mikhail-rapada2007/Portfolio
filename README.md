@@ -88,25 +88,6 @@ Then visit `http://127.0.0.1:8000/` in your browser.
 - **The Admin Login is Hidden.** The admin login is hidden in the word 'tech' in the technology word of my short description.
 - **Only superuser accounts can access the admin dashboard.** Regular registered users, even if created, cannot sign in through `/admin-login/`.
 - **Tech Stack selection on the Create Project form uses checkboxes, not radio buttons.** This is intentional: a single project can use multiple tech stacks, and radio buttons only allow selecting one option at a time, so checkboxes were used to correctly support multiple selections.
-
-
-## Key URLs
-
-| URL | Description |
-|---|---|
-| `/` | Home page |
-| `/projects/` | Project list |
-| `/projects/<id>/` | Project detail |
-| `/projects/add/` | Add a project (admin only) |
-| `/tutoring/` | Tutoring page |
-| `/about/` | About Me |
-| `/testimonies/` | Testimony list |
-| `/testimonies/<id>/` | Testimony detail |
-| `/testimonies/add/` | Leave a testimony (public) |
-| `/contact/` | Contact / inquiry form (public) |
-| `/admin-login/` | Admin sign-in |
-| `/admin-logout/` | Admin sign-out |
-| `/dashboard/` | Admin dashboard (admin only) |
-| `/dashboard/add-tech-stack/` | Add a tech stack (admin only) |
-| `/admin/` | Django's built-in admin panel |
+- **Limitations.** Due to time constraints and other projects due, I would have loved to make the contact me responses reflect in the admin dashboard.
+- **Final Remarks.** OOP was definitely fun; there is just a lot of prerequisite knowledge that we needed to fully learn to follow well in class.
 
