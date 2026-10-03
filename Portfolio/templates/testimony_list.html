@@ -18,14 +18,12 @@
 
         <a href="{% url 'add_testimony' %}" class="leave-testimony-btn">+ Leave a Testimony</a>
 
-        <section class="projects-grid">
+        <section class="testimonies-grid">
             {% for testimony in testimonies %}
-            <div class="project-card">
-                <a href="{% url 'testimony_detail' testimony.pk %}">
-                    <h1 class="project-title-list">{{ testimony.full_name }}</h1>
-                    <p class="project-summary">{{ testimony.content|truncatechars:80 }}</p>
-                </a>
-            </div>
+            <a href="{% url 'testimony_detail' testimony.pk %}" class="testimony-card">
+                <h2 class="testimony-name">{{ testimony.full_name }}</h2>
+                <p class="testimony-preview">{{ testimony.content|truncatechars:80 }}</p>
+            </a>
             {% endfor %}
         </section>
     </main>

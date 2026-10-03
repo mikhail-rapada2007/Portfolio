@@ -21,9 +21,11 @@
 
             <label for="{{ form.full_name.id_for_label }}">Your Name</label>
             {{ form.full_name }}
+            {% if form.full_name.errors %}<p class="form-error">{{ form.full_name.errors.0 }}</p>{% endif %}
 
             <label for="{{ form.content.id_for_label }}">Your Testimony</label>
             {{ form.content }}
+            {% if form.content.errors %}<p class="form-error">{{ form.content.errors.0 }}</p>{% endif %}
 
             <button type="submit">Submit</button>
         </form>
