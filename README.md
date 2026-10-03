@@ -27,32 +27,32 @@ A Django-based personal portfolio showcasing my projects, tutoring experience, a
 These steps will get the project running from a fresh clone, including an empty database that you'll need to set up yourself.
 
 ### 1. Clone the repository
-git clone https://github.com/mikhail-rapada2007/Portfolio.git
+`git clone https://github.com/mikhail-rapada2007/Portfolio.git`
 
-cd Portfolio
+`cd Portfolio`
 
 
 ### 2. Create and activate a virtual environment
-python -m venv .venv
+`python -m venv .venv`
 
 Windows:
-.venv\Scripts\activate
+`.venv\Scripts\activate`
 
 macOS/Linux:
-source .venv/bin/activate
+`source .venv/bin/activate`
 
 
 ### 3. Install dependencies
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 
 ### 4. Set up environment variables
 Duplicate the `.env.example` and rename it as a new file named `.env` in the project root.
 
 Open `.env` and fill in the values:
-SECRET_KEY=your-generated-secret-key-here
+`SECRET_KEY=your-generated-secret-key-here
 DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
+ALLOWED_HOSTS=127.0.0.1,localhost`
 
 To generate a SECRET_KEY, run:
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
