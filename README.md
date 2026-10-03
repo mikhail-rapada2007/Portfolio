@@ -2,7 +2,7 @@
 
 A Django-based personal portfolio showcasing my projects, tutoring experience, and testimonials, with an admin-only dashboard for managing content.
 
-**Live site:** [add PythonAnywhere URL here once deployed]
+**Live site:** https://mikhailrapada.pythonanywhere.com/
 
 ## Features
 
